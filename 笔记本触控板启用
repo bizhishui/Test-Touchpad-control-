@@ -1,0 +1,27 @@
+1、在终端输入以下代码
+
+sudo modprobe -r psmouse
+
+sudo modprobe psmouse
+
+重新加载相应模块后好了（对于我这种情况不管用）
+
+2、有可能是关机前触摸板就处于关闭状态，这种情况下先打开触摸板，再重启一次系统触摸板就能恢复工作 。
+
+在终端输入以下代码
+
+sudo modprobe -r psmouse
+
+sudo modprobe psmouse proto=imps
+
+居然有效了
+
+sudo gedit /etc/modprobe.d/options
+
+添加 options psmouse proto=imps
+
+保存改动重启。
+
+参考地址：
+http://www.linuxidc.com/Linux/2012-06/62438.htm
+http://blog.csdn.net/kiss0kill/article/details/10242267
